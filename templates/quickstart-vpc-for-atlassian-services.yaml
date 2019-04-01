@@ -190,6 +190,18 @@ Resources:
         PublicSubnet1CIDR: !Ref 'PublicSubnet1CIDR'
         PublicSubnet2CIDR: !Ref 'PublicSubnet2CIDR'
         VPCCIDR: !Ref 'VPCCIDR'
+  RouteTable1APeering:
+    Type: AWS::EC2::Route
+      Properties: 
+        DestinationCidrBlock: '10.15.0.0/20'
+        RouteTableId: !Ref 'PrivateSubnet1ARouteTable'
+        VpcPeeringConnectionId: 'pcx-05193cb2b154bccd3'
+  RouteTable2APeering:      
+    Type: AWS::EC2::Route
+      Properties: 
+        DestinationCidrBlock: '10.15.0.0/20'
+        RouteTableId: !Ref 'PrivateSubnet2ARouteTable'
+        VpcPeeringConnectionId: 'pcx-05193cb2b154bccd3'        
   BastionStack:
     Type: AWS::CloudFormation::Stack
     DependsOn:
