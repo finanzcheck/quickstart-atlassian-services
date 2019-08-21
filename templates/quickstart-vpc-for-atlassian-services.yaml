@@ -51,7 +51,7 @@ Metadata:
         default: VPC CIDR
 Parameters:
   AvailabilityZones:
-    Description: 'List of Availability Zones to use for the subnets in the VPC. Note: You must specify 2 AZs here; 
+    Description: 'List of Availability Zones to use for the subnets in the VPC. Note: You must specify 2 AZs here;
       if more are specified only the first 2 will be used.'
     Type: List<AWS::EC2::AvailabilityZone::Name>
   KeyPairName:
@@ -192,16 +192,16 @@ Resources:
         VPCCIDR: !Ref 'VPCCIDR'
   RouteTable1APeering:
     Type: AWS::EC2::Route
-      Properties: 
-        DestinationCidrBlock: '10.15.0.0/20'
-        RouteTableId: !Ref 'PrivateSubnet1ARouteTable'
-        VpcPeeringConnectionId: 'pcx-05193cb2b154bccd3'
-  RouteTable2APeering:      
+    Properties:
+      DestinationCidrBlock: '10.15.0.0/20'
+      RouteTableId: !Ref 'PrivateSubnet1ARouteTable'
+      VpcPeeringConnectionId: 'pcx-05193cb2b154bccd3'
+  RouteTable2APeering:
     Type: AWS::EC2::Route
-      Properties: 
-        DestinationCidrBlock: '10.15.0.0/20'
-        RouteTableId: !Ref 'PrivateSubnet2ARouteTable'
-        VpcPeeringConnectionId: 'pcx-05193cb2b154bccd3'        
+    Properties:
+      DestinationCidrBlock: '10.15.0.0/20'
+      RouteTableId: !Ref 'PrivateSubnet2ARouteTable'
+      VpcPeeringConnectionId: 'pcx-05193cb2b154bccd3'
   BastionStack:
     Type: AWS::CloudFormation::Stack
     DependsOn:
